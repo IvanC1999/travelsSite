@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поездки</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="nav-bar">
+                <div class="left-side-from-nav-bar">
+                    <span><strong>Поездки</strong></span>
+                </div>
+                <div class="user-info">
+                    <span>Заболоцкий К.О</span>
+                    <div class="arrowsvg"></div>
+                </div>
+            </div>
+        </header>
+        </header>
+        <nav>
+            <span><strong>Мои поездки</strong></span>
+            <button class="trip-button">
+                <span class="plus-icon">+</span>
+                Оформить поездку
+            </button>
+        </nav>
+        <div class="filters">
+            <label for="date-from">Период с:</label>
+            <input type="date" id="date-from" value="2024-02-22">
+            <label for="date-to">по:</label>
+            <input type="date" id="dateInput">
+            <input class="search" placeholder="Поиск..."></input>
+            <span class="reset">
+                <span class="cross-icon">&#10006;</span>
+                <span>Сбросить все</span>
+            </span>
+            <label class="checkbox-label">
+                <input type="checkbox" class="checkbox-input">
+                <span class="checkbox-text">Показать архивные поездки</span>
+            </label>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>№ поездки</th>
+                        <th>Дата поездки</th>
+                        <th>Сумма, план</th>
+                        <th>Сумма, факт</th>
+                        <th>Город</th>
+                        <th class="status">Статус</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>000115</td>
+                        <td>22.02.2024 - 27.02.2024</td>
+                        <td>29 400,00</td>
+                        <td>29 400,00</td>
+                        <td>Москва, Ярославль, Ижевск, Владимир</td>
+                        <td class="documents"><button class="documents-button">
+                                Документы
+                            </button></td>
+                    </tr>
+                    <tr>
+                        <td>000117</td>
+                        <td>22.02.2024 - 27.02.2024</td>
+                        <td>29 400,00</td>
+                        <td>29 400,00</td>
+                        <td>Москва</td>
+                        <td class="documents"><button class="documents-button">
+                                Документы
+                            </button></td>
+                    </tr>
+                    <tr>
+                        <td>000074</td>
+                        <td>22.02.2024 - 27.02.2024</td>
+                        <td>29 400,00</td>
+                        <td>29 400,00</td>
+                        <td class="cell-with-tooltip">Кременчуг, Константиновское, Петропавловск-Камчатский,
+                            Новосибирск,
+                            Волгоград, Саратов</td>
+                        <td class="documents"><button class="documents-button">
+                                Документы
+                            </button></td>
+                    </tr>
+                    <tr>
+                        <td>000211</td>
+                        <td>22.02.2024 - 27.02.2024</td>
+                        <td>29 400,00</td>
+                        <td>29 400,00</td>
+                        <td>Москва, Ярославль, Ижевск, Владимир</td>
+                        <td class="documents"><button class="documents-button">
+                                Документы
+                            </button></td>
+                    </tr>
+                    <tr>
+                        <td>000118</td>
+                        <td>22.02.2024 - 27.02.2024</td>
+                        <td>29 400,00</td>
+                        <td>29 400,00</td>
+                        <td>Москва, Ярославль, Ижевск, Владимир</td>
+                        <td class="documents"><button class="documents-button">
+                                Документы
+                            </button></td>
+                    </tr>
+                    <tr>
+                        <td>000119</td>
+                        <td>22.02.2024 - 27.02.2024</td>
+                        <td>29 400,00</td>
+                        <td>29 400,00</td>
+                        <td>Москва, Ярославль, Ижевск, Владимир</td>
+                        <td class="documents"><button class="documents-button">Документы</button></td>
+                    </tr>
+                    <tr>
+                        <td>000120</td>
+                        <td>22.02.2024 - 27.02.2024</td>
+                        <td>29 400,00</td>
+                        <td>29 400,00</td>
+                        <td>Москва, Ярославль, Ижевск, Владимир</td>
+                        <td class="documents"><button class="documents-button">
+                                Документы
+                            </button></td>
+                    </tr>
+                    <tr>
+                        <td>000133</td>
+                        <td>22.02.2024 - 27.02.2024</td>
+                        <td>29 400,00</td>
+                        <td>29 400,00</td>
+                        <td>Москва, Ярославль, Ижевск, Владимир</td>
+                        <td class="documents"><button class="documents-button">
+                                Документы
+                            </button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        const table = document.querySelector('table');
+        const headerRow = table.querySelector('thead tr');
+        const dataRows = table.querySelectorAll('tbody tr');
+
+        for (let i = 1; i < dataRows.length; i++) {
+            const clonedHeader = headerRow.cloneNode(true);
+            dataRows[i].parentNode.insertBefore(clonedHeader, dataRows[i]);
+        }
+    </script>
+    <script>
+        const cells = document.querySelectorAll('.cell-with-tooltip');
+
+        cells.forEach(cell => {
+            const cellWidth = cell.offsetWidth;
+            const cellText = cell.textContent;
+            const textWidth = getTextWidth(cellText, getComputedStyle(cell).font);
+
+            if (textWidth > cellWidth) {
+                const truncatedText = cellText.slice(0, 50) + '...';
+                cell.innerHTML = truncatedText + '<div class="tooltip-icon"></div>';
+                cell.setAttribute('data-tooltip', cellText);
+
+                cell.addEventListener('mouseover', (event) => {
+                    if (event.target.classList.contains('tooltip-icon')) {
+                        const tooltip = document.createElement('div');
+                        tooltip.classList.add('tooltip');
+                        tooltip.textContent = cell.getAttribute('data-tooltip');
+                        cell.appendChild(tooltip);
+                    }
+                });
+
+                cell.addEventListener('mouseout', () => {
+                    const tooltip = cell.querySelector('.tooltip');
+                    if (tooltip) {
+                        cell.removeChild(tooltip);
+                    }
+                });
+            }
+        });
+
+        function getTextWidth(text, font) {
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            context.font = font;
+            const metrics = context.measureText(text);
+            return metrics.width;
+        }
+    </script>
+</body>
+
+</html>
