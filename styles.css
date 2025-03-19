@@ -106,6 +106,17 @@ nav {
 
 }
 
+.top-border {
+    border-top: 8px solid #f6fcff;
+    border-left: 8px solid #f6fcff;
+    border-right: 8px solid #f6fcff;
+}
+
+.borders {
+    border-left: 8px solid #f6fcff;
+    border-right: 8px solid #f6fcff;
+}
+
 .filters label {
     margin-right: 10px;
 }
